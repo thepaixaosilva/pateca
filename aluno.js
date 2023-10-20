@@ -1,6 +1,7 @@
-export default class aluno{
-    constructor(RA,nome){
-        this.RA=RA;
-        this.nome=nome;
-}
+export default class Aluno {
+    constructor (ra, nome, senha) {
+        this.ra = ra
+        this.nome = nome
+        this.senha = senha
+    }
 }
