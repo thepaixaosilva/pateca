@@ -1,11 +1,13 @@
 import express from 'express'
+import db from './database/config.js'
+import AlunoRoutes from './routes/AlunoRoutes.js'
 
-const app = express()
-app.use(express.json)
+const app = new express()
 
-app.get('/healthcheck',(req,res)=>{
-    res.send('OK!')
-})
+app.use(express.json())
+
+const alunoRoutes = new AlunoRoutes(db)
+app.use('/alunos', alunoRoutes.routes())
 
 app.listen(3000,() => {
     console.log('Server rodando na porta 3000')
