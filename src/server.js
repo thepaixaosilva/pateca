@@ -1,6 +1,6 @@
 import express from 'express'
 import database from './database/database.js'
-import GabaritoRoutes from './routes/GabaritoRoutes'
+import GabaritoRoutes from './routes/GabaritoRoutes.js'
 
 const app = express()
 app.use(express.json())
