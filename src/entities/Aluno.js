@@ -5,7 +5,8 @@ export default class Aluno {
         this.senha = senha
     }
 
-    verificarCoordenador(ra, senha) { // método para verificar se o login é do coordenador
+    // Método para verificar se o login é do coordenador.
+    async verificarCoordenador(ra, senha) { 
         const minhaPromise = new Promise((resolve,reject) => {
             if (ra == 123456789 && senha == "coordenador") {
                 resolve(`É coordenador`)

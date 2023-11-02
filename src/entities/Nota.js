@@ -1,3 +1,4 @@
+// Entidade Nota (será alterado).
 export default class Nota {
     constructor (cod, codAluno, codMateria, codGabarito, nota) {
         this.cod = cod
