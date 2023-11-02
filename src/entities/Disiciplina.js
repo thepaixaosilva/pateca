@@ -1,3 +1,4 @@
+// Entidade Disciplina.
 export default class Disciplina {
     constructor (codDisciplina, nome, semestre) {
         this.codDisciplina = codDisciplina

@@ -1,4 +1,7 @@
+// Rotas Aluno (precisa de mudanças/melhorias).
+
 import { Router } from "express"
+import Aluno from '../entities/Aluno.js'
 import AlunoModel from "../models/AlunoModel.js"
 
 export default class AlunoRoutes {

@@ -1,6 +1,7 @@
 import express from 'express'
 import database from './database/database.js'
 import GabaritoRoutes from './routes/GabaritoRoutes.js'
+import AlunoRoutes from './routes/AlunoRoutes.js'
 
 const app = express()
 app.use(express.json())
@@ -9,9 +10,13 @@ app.get('/healthcheck',(req,res)=>{
     res.send('Ok!')
 })
 
-//acessa as rotas Gabarito
+// Acessa as rotas Gabarito
 const gabaritoRoutes = new GabaritoRoutes(database)
 app.use('/gabaritos',gabaritoRoutes.routes())
+
+// Acessa as rotas Aluno
+const alunoRoutes = new AlunoRoutes(db)
+app.use('/alunos', alunoRoutes.routes())
 
 app.listen(3000,() => {
     console.log('Server rodando na porta 3000')
