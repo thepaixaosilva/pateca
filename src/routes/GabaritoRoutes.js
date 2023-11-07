@@ -16,13 +16,18 @@ export default class GabaritoRoutes {
             const gabaritos = this.db.findAll()
             res.json(gabaritos)
         })
+        //rota Create
+        router.post('/',(req,res) => {
+            const {codGabarito, codMateria, resp1, resp2, resp3, resp4 , resp5, dataProva} = req.body //extrai os dados que foram colocados no corpo da requisição
 
-        router.post('/',(req,res)=>{
-            const {codGabarito, resp1, codMateria, dataProva} = req.body
+            //validação:
+            if(!codGabarito || codGabarito == "") return res.status(400).json({erro: 'Código gabarito obrigatório'})
+            if(!codMateria || codMateria == "") return res.status(400).json({erro: 'Código matéria obrigatório'})
+            if(!dataProva || dataProva == "") return res.status(400).json({erro: 'Data da Prova obrigatória'})
 
-            const gabarito = new Gabarito(codGabarito, resp1, codMateria, dataProva)
-            this.db.create(gabarito)
-            res.status(201).json(gabarito)
+            const gabarito = new Gabarito(codGabarito, codMateria, resp1, resp2, resp3, resp4 , resp5, dataProva) //cria um novo gabarito
+            this.db.create(gabarito)//usando o método criado na BaseModel adiciona esse novo gabarito ao banco de dados
+            res.status(201).json(tarefa)
         })
 
         //rota FindById
