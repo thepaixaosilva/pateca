@@ -1,6 +1,6 @@
 //todos os modelos vão herdar as funcionalidades dessa base
 export default class BaseModel {
-    //recebe um banco de dados (que no caso seria o 'database') e uma entidade (alunos, disciplinas, gabaritos ou notas)
+    //recebe um banco de dados e uma entidade
     constructor(db,entity){
         this.db = db[entity]
     }

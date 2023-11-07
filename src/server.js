@@ -1,5 +1,5 @@
 import express from 'express'
-import database from './database/database.js'
+import db from './database/database.js'
 import GabaritoRoutes from './routes/GabaritoRoutes.js'
 import AlunoRoutes from './routes/AlunoRoutes.js'
 
@@ -11,7 +11,7 @@ app.get('/healthcheck',(req,res)=>{
 })
 
 // Acessa as rotas Gabarito
-const gabaritoRoutes = new GabaritoRoutes(database)
+const gabaritoRoutes = new GabaritoRoutes(db)
 app.use('/gabaritos',gabaritoRoutes.routes())
 
 // Acessa as rotas Aluno
