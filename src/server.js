@@ -12,7 +12,7 @@ app.get('/healthcheck',(req,res)=>{
 
 // Acessa as rotas Gabarito
 const gabaritoRoutes = new GabaritoRoutes(db)
-app.use('/gabaritos',gabaritoRoutes.routes())
+app.use('/gabaritos', gabaritoRoutes.routes())
 
 // Acessa as rotas Aluno
 const alunoRoutes = new AlunoRoutes(db)
@@ -21,3 +21,6 @@ app.use('/alunos', alunoRoutes.routes())
 app.listen(3000,() => {
     console.log('Server rodando na porta 3000')
 })
+
+//console.log(db.alunos)
+//console.log(db.gabaritos)
