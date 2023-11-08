@@ -1,7 +1,7 @@
 import express from 'express'
-import db from './database/database.js'
-import GabaritoRoutes from './routes/GabaritoRoutes.js'
-import AlunoRoutes from './routes/AlunoRoutes.js'
+import db from "./database/database.js"
+import GabaritoRoutes from "./routes/GabaritoRoutes.js"
+import AlunoRoutes from "./routes/AlunoRoutes.js"
 
 const app = express()
 app.use(express.json())
