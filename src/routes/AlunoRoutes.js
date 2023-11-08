@@ -17,16 +17,16 @@ export default class AlunoRoutes {
       res.json(alunos)
     })
 
-    /*
-    router.get('/:id', (req, res) => {
-      const aluno = this.db.findById(req.params.id)
-      if (!aluno) {
-        res.status(404).json({ message: 'Aluno(a) não encontrado(a)' })
-      } else {
-        res.json(aluno)
-      }
+    router.get('/:ra', (req, res) => {
+      const {ra} = req.params
+
+      if (!ra || ra == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório.' })
+
+      const aluno = this.db.findAluno(ra)
+      if(!aluno) return res.status(404).json({erro: "Aluno não encontrado"})
+      
+      res.status(200).json(aluno)
     })
-    */
 
     router.post('/', (req, res) => {
       const novoAluno = req.body
@@ -36,27 +36,28 @@ export default class AlunoRoutes {
       if(!novoAluno.senha) return res.status(400).json({ message: 'A senha é obrigatória' })
 
       this.db.create(novoAluno)
-      res.json(novoAluno)
+      res.status(201).json(novoAluno)
     })
 
-    /*
-    router.put('/:id', (req, res) => {
-      const { id } = req.params
+    // Alterei o 'put' para 'patch', mas (provavelmente) o 'put' funcionaria da mesma forma que o 'patch' (nesse caso).
+    router.patch('/:ra', (req, res) => {
+      const { ra } = req.params
       const aluno = req.body
 
-      if(!aluno.id) return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
-      if(!aluno.nome) return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
-      if(!aluno.senha) return res.status(400).json({ message: 'A senha é obrigatória' })
+      if(!aluno.ra || aluno.ra == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
+      if(!aluno.nome || aluno.nome == "") return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
+      if(!aluno.senha || aluno.senha == "") return res.status(400).json({ message: 'A senha é obrigatória' })
 
-      this.db.update(id, aluno)
+      this.db.updateAluno(ra, aluno)
       res.json(aluno)
     })
-    */
 
     router.delete('/:ra', (req, res) => {
       const { ra } = req.params
-      this.db.delete(ra)
-      res.json({ message: 'Aluno(a) removido(a) com sucesso' })
+      if(!ra || ra == "") return res.status(400).json({erro: 'Campo "RA" obrigatório'})
+      const excluir = this.db.deleteAluno(Number(ra))
+      if(!excluir) return res.status(404).json({erro: "Erro ao excluir."})
+      res.json({ message: 'Aluno(a) removido(a) com sucesso.' })
     })
     
     return router

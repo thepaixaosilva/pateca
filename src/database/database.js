@@ -7,8 +7,8 @@ import Nota from "../entities/Nota.js"
 //cria um banco de dados com as entidades
 const db = {
     alunos: [
-        new Aluno("1234567890123", "Fulano da Silva", "asdfasdfasdf"),
-        new Aluno("0987654321098", "Cicrano Bastos", "qwerqwerqwerqwer")
+        new Aluno(1234567890123, "Fulano da Silva", "asdfasdfasdf"),
+        new Aluno(9987654321098, "Cicrano Bastos", "qwerqwerqwerqwer")
     ],
     disciplinas: [
         new Disciplina("LP003", "Comunicação e Expressão", 2),
