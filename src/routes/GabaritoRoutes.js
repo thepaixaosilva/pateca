@@ -19,16 +19,16 @@ export default class GabaritoRoutes {
             res.json(gabaritos) //transforma os dados em um json
         })
 
-        //rota Create
+        /*rota Create
         router.post('/',(req,res) => {
-            const {codGabarito, codMateria, resp1, resp2, resp3, resp4 , resp5, dataProva} = req.body //extrai os dados que foram colocados no corpo da requisição
+            const {codGabarito, resp1, resp2, resp3, resp4 , resp5, codMateria, dataProva} = req.body //extrai os dados que foram colocados no corpo da requisição
 
             //validação:
             if(!codGabarito || codGabarito == "") return res.status(400).json({erro: 'Código gabarito obrigatório'})
             if(!codMateria || codMateria == "") return res.status(400).json({erro: 'Código matéria obrigatório'})
             if(!dataProva || dataProva == "") return res.status(400).json({erro: 'Data da Prova obrigatória'})
 
-            const gabarito = new Gabarito(codGabarito, codMateria, resp1, resp2, resp3, resp4 , resp5, dataProva) //cria um novo gabarito
+            const gabarito = new Gabarito(codGabarito, resp1, resp2, resp3, resp4 , resp5,codMateria, dataProva) //cria um novo gabarito
             this.db.create(gabarito)//usando o método criado na BaseModel adiciona esse novo gabarito ao banco de dados
             res.status(201).json(tarefa)
         })
@@ -62,19 +62,18 @@ export default class GabaritoRoutes {
         //rota Update
         router.put('/:cod',(req,res) => {
             const {cod} = req.params //extrai o codigo que foi colocado como parametro
-            const {codGabarito, codMateria, respostas, dataProva} = req.body //extrai os dados que foram colocados no corpo da requisição
+            const {codGabarito, resp1, resp2, resp3, resp4 , resp5, codMateria, dataProva} = req.body //extrai os dados que foram colocados no corpo da requisição
 
             //validação:
             if(!codGabarito || codGabarito == "") return res.status(400).json({erro: 'Código gabarito obrigatório'})
             if(!codMateria || codMateria == "") return res.status(400).json({erro: 'Código matéria obrigatório'})
-            if(!respostas || respostas == "") return res.status(400).json({erro: 'Respotas obrigatórias'})
             if(!dataProva || dataProva == "") return res.status(400).json({erro: 'Data da Prova obrigatória'})
 
-            const gabarito = new Gabarito(codGabarito, codMateria, respostas, dataProva) //cria um novo gabarito atualizando os dados
+            const gabarito = new Gabarito(codGabarito, resp1,resp2,resp3,resp4,resp5, codMateria, dataProva) //cria um novo gabarito atualizando os dados
             this.db.update(cod,gabarito) //atualiza gabarito
 
             res.json(gabarito)
-        })
+        })*/
         return router
     }
 }
