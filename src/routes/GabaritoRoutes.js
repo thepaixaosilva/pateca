@@ -17,12 +17,13 @@ export default class GabaritoRoutes {
             res.json(gabaritos)
         })
 
-        /*router.post('/',(req,res) => {
-            const novoGabarito = req.body
+        router.post('/',(req,res)=>{
+            const {codGabarito, resp1, codMateria, dataProva} = req.body
 
-            this.db.create(novoGabarito)
-            res.json(novoGabarito)
-        })*/
+            const gabarito = new Gabarito(codGabarito, resp1, codMateria, dataProva)
+            this.db.create(gabarito)
+            res.status(201).json(gabarito)
+        })
 
         //rota FindById
         /*
