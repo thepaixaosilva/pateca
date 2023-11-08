@@ -1,6 +1,6 @@
-// Entidade gabarito.
+// Entidade gabarito
 export default class Gabarito {
-    constructor (codGabarito,resp1, codMateria, dataProva){
+    constructor (codGabarito, resp1, codMateria, dataProva){
         this.codGabarito = codGabarito
         this.resp1 = resp1
         this.codMateria = codMateria
