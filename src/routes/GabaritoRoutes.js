@@ -1,22 +1,20 @@
 //rotas Gabarito
 
-import {Router} from 'express'
-import Gabarito from '../entities/Gabarito.js'
-import GabaritoModel from '../models/GabaritoModel.js'
+import {Router} from "express"
+import Gabarito from "../entities/Gabarito.js"
+import GabaritoModel from "../models/GabaritoModel.js"
 
 export default class GabaritoRoutes {
-    //db recebe os dados salvos na parte de Gabarito
     constructor(db){
         this.db = new GabaritoModel(db)
     }
 
     routes(){
-        const router = Router() //função para criar rotas
+        const router = Router()
 
-        //rota FindAll
         router.get('/',(req,res) => {
-            const gabaritos = this.db.findAll() //chama o método findAll criada na BaseModel
-            res.json(gabaritos) //transforma os dados em um json
+            const gabaritos = this.db.findAll()
+            res.json(gabaritos)
         })
 
         /*rota Create
