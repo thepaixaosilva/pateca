@@ -14,8 +14,8 @@ const db = {
         new Disciplina("LP003", "Comunicação e Expressão", 2),
         new Disciplina("AG994", "Administração Geral", 1)
     ],
-    gabarito: [
-        new Gabarito(1, 1, "a", "a", "a", "a", "a", "21/10/2023")
+    gabaritos: [
+        new Gabarito("1", "a", "1", "10/10/2023")
     ],
     nota: [
         new Nota(1, "1234567890123", "LP003", 1, 10)
