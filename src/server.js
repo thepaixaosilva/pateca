@@ -1,6 +1,6 @@
 import express from 'express'
 import db from "./database/database.js"
-import GabaritoRoutes from "./routes/GabaritoRoutes.js"
+import GabaritoOficialRoutes from "./routes/GabaritoOficialRoutes.js"
 import AlunoRoutes from "./routes/AlunoRoutes.js"
 
 const app = express()
@@ -10,9 +10,9 @@ app.get('/healthcheck',(req,res)=>{
     res.send('Ok!')
 })
 
-// Acessa as rotas Gabarito
-const gabaritoRoutes = new GabaritoRoutes(db)
-app.use('/gabaritos', gabaritoRoutes.routes())
+// Acessa as rotas GabaritoOficial
+const gabaritoOficialRoutes = new GabaritoOficialRoutes(db)
+app.use('/gabaritoOficiais', gabaritoOficialRoutes.routes())
 
 // Acessa as rotas Aluno
 const alunoRoutes = new AlunoRoutes(db)
@@ -23,4 +23,4 @@ app.listen(3000,() => {
 })
 
 //console.log(db.alunos)
-//console.log(db.gabaritos)
+//console.log(db.gabaritoOficiais)
