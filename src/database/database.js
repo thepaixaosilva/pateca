@@ -18,7 +18,7 @@ const db = {
         new GabaritoAluno(1, "1234567890123", "LP003", 1, ["a","b","c","d","e"], 10)
     ],
     gabaritoOficiais: [
-        new GabaritoOficial(1, "a", 1, "10/10/2023")
+        new GabaritoOficial(1, ["a","b","c","d","e"], 1, "10/10/2023")
     ]
 }
 
