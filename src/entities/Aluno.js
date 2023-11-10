@@ -1,14 +1,14 @@
 export default class Aluno {
-    constructor (ra, nome, senha) {
-        this.ra = ra
+    constructor (id, nome, senha) {
+        this.id = id
         this.nome = nome
         this.senha = senha
     }
 
     // Método para verificar se o login é do coordenador.
-    async verificarCoordenador(ra, senha) { 
+    async verificarCoordenador(id, senha) { 
         const minhaPromise = new Promise((resolve,reject) => {
-            if (ra == 123456789 && senha == "coordenador") {
+            if (id == 123456789 && senha == "coordenador") {
                 resolve(`É coordenador`)
             } else {
                 reject(`Não é coordenador`)
