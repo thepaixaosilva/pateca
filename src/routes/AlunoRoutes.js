@@ -1,7 +1,4 @@
-// Rotas Aluno (precisa de mudanças/melhorias).
-
 import { Router } from "express"
-import Aluno from '../entities/Aluno.js'
 import AlunoModel from "../models/AlunoModel.js"
 
 export default class AlunoRoutes {
@@ -12,26 +9,29 @@ export default class AlunoRoutes {
   routes() {
     const router = Router()
 
+    // Obtém todos os registros.
     router.get('/', (req, res) => {
       const alunos = this.db.findAll()
       res.json(alunos)
     })
 
-    router.get('/:ra', (req, res) => {
-      const {ra} = req.params
+    // Obtém apenas o registro especificado na requisição.
+    router.get('/:id', (req, res) => {
+      const {id} = req.params
 
-      if (!ra || ra == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório.' })
+      if (!id || id == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório.' })
 
-      const aluno = this.db.findAluno(ra)
+      const aluno = this.db.findById(id)
       if(!aluno) return res.status(404).json({erro: "Aluno não encontrado"})
       
       res.status(200).json(aluno)
     })
 
+    // Cria um novo registro.
     router.post('/', (req, res) => {
       const novoAluno = req.body
       
-      if(!novoAluno.ra) return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
+      if(!novoAluno.id) return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
       if(!novoAluno.nome) return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
       if(!novoAluno.senha) return res.status(400).json({ message: 'A senha é obrigatória' })
 
@@ -39,23 +39,24 @@ export default class AlunoRoutes {
       res.status(201).json(novoAluno)
     })
 
-    // Alterei o 'put' para 'patch', mas (provavelmente) o 'put' funcionaria da mesma forma que o 'patch' (nesse caso).
-    router.patch('/:ra', (req, res) => {
-      const { ra } = req.params
+    // Altera um registro existente.
+    router.patch('/:id', (req, res) => {
+      const { id } = req.params
       const aluno = req.body
 
-      if(!aluno.ra || aluno.ra == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
+      if(!aluno.id || aluno.id == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
       if(!aluno.nome || aluno.nome == "") return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
       if(!aluno.senha || aluno.senha == "") return res.status(400).json({ message: 'A senha é obrigatória' })
 
-      this.db.updateAluno(ra, aluno)
+      this.db.update(id, aluno)
       res.json(aluno)
     })
 
-    router.delete('/:ra', (req, res) => {
-      const { ra } = req.params
-      if(!ra || ra == "") return res.status(400).json({erro: 'Campo "RA" obrigatório'})
-      const excluir = this.db.deleteAluno(Number(ra))
+    // Exclui um registro da base de dados.
+    router.delete('/:id', (req, res) => {
+      const { id } = req.params
+      if(!id || id == "") return res.status(400).json({erro: 'Campo "RA" obrigatório'})
+      const excluir = this.db.delete(Number(id))
       if(!excluir) return res.status(404).json({erro: "Erro ao excluir."})
       res.json({ message: 'Aluno(a) removido(a) com sucesso.' })
     })
