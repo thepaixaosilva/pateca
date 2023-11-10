@@ -1,8 +1,8 @@
 //importa todas as entidades criadas
 import Aluno from "../entities/Aluno.js"
 import Disciplina from "../entities/Disiciplina.js"
-import Gabarito from "../entities/Gabarito.js"
-import Nota from "../entities/Nota.js"
+import GabaritoOficial from "../entities/GabaritoOficial.js"
+import GabaritoAluno from "../entities/GabaritoAluno.js"
 
 //cria um banco de dados com as entidades
 const db = {
@@ -14,11 +14,11 @@ const db = {
         new Disciplina("LP003", "Comunicação e Expressão", 2),
         new Disciplina("AG994", "Administração Geral", 1)
     ],
-    gabarito: [
-        new Gabarito(1, 1, "a", "a", "a", "a", "a", "21/10/2023")
+    gabaritoOficiais: [
+        new GabaritoOficial(1, "a", 1, "10/10/2023")
     ],
-    nota: [
-        new Nota(1, "1234567890123", "LP003", 1, 10)
+    gabaritoAlunos: [
+        new GabaritoAluno(1, "1234567890123", "LP003", 1, 10)
     ]
 }
 
