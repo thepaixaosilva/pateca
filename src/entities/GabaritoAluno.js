@@ -1,7 +1,7 @@
 // Entidade Nota (será alterado).
 export default class GabaritoAluno {
-    constructor (codGabaritoAluno, codAluno, codDisciplina, codGabaritoOficial, respostaAluno, nota) {
-        this.codGabaritoAluno = codGabaritoAluno
+    constructor (id, codAluno, codDisciplina, codGabaritoOficial, respostaAluno, nota) {
+        this.id = id
         this.codAluno = codAluno
         this.codDisciplina = codDisciplina
         this.codGabaritoOficial = codGabaritoOficial
