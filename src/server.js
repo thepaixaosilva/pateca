@@ -1,6 +1,7 @@
 import express from 'express'
 import db from "./database/database.js"
 import AlunoRoutes from "./routes/AlunoRoutes.js"
+import DisciplinaRoutes from "./routes/DisciplinaRoutes.js"
 import GabaritoAlunoRoutes from "./routes/GabaritoAlunoRoutes.js"
 import GabaritoOficialRoutes from "./routes/GabaritoOficialRoutes.js"
 
@@ -14,6 +15,10 @@ app.get('/healthcheck',(req,res)=>{
 // Acessa as rotas Aluno
 const alunoRoutes = new AlunoRoutes(db)
 app.use('/alunos', alunoRoutes.routes())
+
+// Acessa as rotas Disicplina
+const disciplinaRoutes = new DisciplinaRoutes(db)
+app.use('/disciplinas', disciplinaRoutes.routes())
 
 // Acessa as rotas GabaritoAluno
 const gabaritoAlunoRoutes = new GabaritoAlunoRoutes(db)
