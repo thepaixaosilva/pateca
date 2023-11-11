@@ -1,9 +1,9 @@
 import { Router } from "express"
-import DisciplianaModel from "../models/DisciplinaModel.js"
+import DisciplinaModel from "../models/DisciplinaModel.js"
 
 export default class DisciplinaRoutes {
   constructor(db) {
-    this.db = new DisciplianaModel(db)
+    this.db = new DisciplinaModel(db)
   }
 
   routes() {
@@ -22,21 +22,21 @@ export default class DisciplinaRoutes {
       if (!id || id == "") return res.status(400).json({ message: 'O campo "ID" é obrigatório.' })
 
       const disciplina = this.db.findById(id)
-      if(!disciplina) return res.status(404).json({erro: "Discipliana não encontrado"})
+      if(!disciplina) return res.status(404).json({erro: "Disciplina não encontrado"})
       
       res.status(200).json(disciplina)
     })
 
     // Cria um novo registro.
     router.post('/', (req, res) => {
-      const novaDiscipliana = req.body
+      const novaDisciplina = req.body
       
-      if(!novaDiscipliana.id) return res.status(400).json({ message: 'O campo "Id" é obrigatório' })
-      if(!novaDiscipliana.nome) return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
-      if(!novaDiscipliana.semestre) return res.status(400).json({ message: 'O semestre é obrigatório' })
+      if(!novaDisciplina.id) return res.status(400).json({ message: 'O campo "Id" é obrigatório' })
+      if(!novaDisciplina.nome) return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
+      if(!novaDisciplina.semestre) return res.status(400).json({ message: 'O semestre é obrigatório' })
 
-      this.db.create(novaDiscipliana)
-      res.status(201).json(novaDiscipliana)
+      this.db.create(novaDisciplina)
+      res.status(201).json(novaDisciplina)
     })
 
     // Altera um registro existente.
@@ -55,10 +55,8 @@ export default class DisciplinaRoutes {
     // Exclui um registro da base de dados.
     router.delete('/:id', (req, res) => {
       const { id } = req.params
-      if(!id || id == "") return res.status(400).json({erro: 'Campo "Id" obrigatório'})
-      const excluir = this.db.delete(Number(id))
-      if(!excluir) return res.status(404).json({erro: "Erro ao excluir."})
-      res.json({ message: 'Discipliana removida com sucesso.' })
+      this.db.delete(id)
+      res.json({ message: 'Disciplina removida com sucesso.' })
     })
     
     return router
