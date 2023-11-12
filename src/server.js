@@ -5,6 +5,9 @@ import DisciplinaRoutes from "./routes/DisciplinaRoutes.js"
 import GabaritoAlunoRoutes from "./routes/GabaritoAlunoRoutes.js"
 import GabaritoOficialRoutes from "./routes/GabaritoOficialRoutes.js"
 
+import swaggerUi from "swagger-ui-express"
+import swaggerDocument from './swagger/config.js'
+
 const app = express()
 app.use(express.json())
 
@@ -28,9 +31,10 @@ app.use('/gabaritoAlunos', gabaritoAlunoRoutes.routes())
 const gabaritoOficialRoutes = new GabaritoOficialRoutes(db)
 app.use('/gabaritoOficiais', gabaritoOficialRoutes.routes())
 
+//swagger
+app.use('/docs', swaggerUi.serve,
+swaggerUi.setup(swaggerDocument, {explore: true}))
+
 app.listen(3000,() => {
     console.log('Server rodando na porta 3000')
 })
-
-//console.log(db.alunos)
-//console.log(db.gabaritoOficiais)
