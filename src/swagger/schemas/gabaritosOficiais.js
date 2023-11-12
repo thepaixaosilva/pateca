@@ -7,7 +7,7 @@ export const GabaritoOficial = {
             description: "ID do gabarito oficial",
         },
         respostaProva: {
-            type: "string", //array de strings
+            type: "array",
             description: "Respostas da prova",
         },
         codDisciplina: {
