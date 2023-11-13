@@ -40,7 +40,7 @@ export default class DisciplinaRoutes {
     })
 
     // Altera um registro existente.
-    router.patch('/:id', (req, res) => {
+    router.put('/:id', (req, res) => {
       const { id } = req.params
       const disciplina = req.body
 
