@@ -1,16 +1,16 @@
-export const GetPostAluno = {
+export const GetPostDisciplina = {
     get: {
-        description: "Retorna a lista de Alunos",
-        tags: ["Aluno"],
+        description: "Retorna a lista de Discilpinas",
+        tags: ["Disciplinas"],
         responses: {
             200: {
-                description: "Lista de alunos",
+                description: "Lista de disciplinas",
                 content: {
                     "application/json": {
                         schema: {
                             type: "array",
                             items: {
-                                $ref: "#/schemas/Aluno"
+                                $ref: "#/schemas/Disciplinas"
                             }
                         },
                     },
@@ -22,25 +22,25 @@ export const GetPostAluno = {
         },
     },
     post: {
-        description: "Cria um novo aluno",
-        tags: ["Aluno"],
+        description: "Cria uma nova disciplina",
+        tags: ["Disciplina"],
         requestBody: {
             required: true,
             content: {
                 "application/json": {
                     schema: {
-                        $ref: "#/schemas/Aluno" 
+                        $ref: "#/schemas/Disciplina" 
                     },
                 },
             },
         },
         responses: {
             200: {
-                description: "O aluno foi criado",
+                description: "A Disciplina foi criado",
                 content: {
                     "application/json": {
                         schema: {
-                            $ref: "#/schemas/Aluno"
+                            $ref: "#/schemas/Disciplina"
                         },
                     },
                 },
@@ -52,15 +52,15 @@ export const GetPostAluno = {
     },
 }
 
-export const GetDeletePutAlunoById = {
+export const GetDeletePutDisciplinaById = {
     get: {
-        description: "Retorna o Aluno pelo ID",
-        tags: ["Aluno"],
+        description: "Retorna a Disciplina pelo ID",
+        tags: ["Disciplina"],
         parameters: [
             {
                 name: "id",
                 in: "path",
-                description: "ID do aluno",
+                description: "ID da disciplina",
                 required: true,
                 schema: {
                     type: "number"
@@ -69,11 +69,11 @@ export const GetDeletePutAlunoById = {
         ],
         responses: {
             200: {
-                description: "aluno",
+                description: "disciplina",
                 content: {
                     "application/json": {
                         schema: {
-                            $ref: "#/schemas/Aluno"
+                            $ref: "#/schemas/Disciplina"
                         }
                     },
                 },
@@ -84,13 +84,13 @@ export const GetDeletePutAlunoById = {
         },
     },
     delete: {
-        description: "Deleta o aluno pelo ID",
-        tags: ["Aluno"],
+        description: "Deleta a disciplina pelo ID",
+        tags: ["Disciplina"],
         parameters: [
             {
                 name: "id",
                 in: "path",
-                description: "ID do aluno",
+                description: "ID da Disciplina",
                 required: true,
                 schema: {
                     type: "number"
@@ -99,11 +99,11 @@ export const GetDeletePutAlunoById = {
         ],
         responses: {
             200: {
-                description: "aluno",
+                description: "disciplina",
                 content: {
                     "application/json": {
                         schema: {
-                            $ref: "#/schemas/Aluno"
+                            $ref: "#/schemas/Disciplina"
                         }
                     },
                 },
@@ -114,14 +114,14 @@ export const GetDeletePutAlunoById = {
         },
     },
     put: {
-        description: "Atualiza um aluno",
-        tags: ["Aluno"],
+        description: "Atualiza uma disciplina",
+        tags: ["Disciplina"],
         requestBody: {
             required: true,
             content: {
                 "application/json": {
                     schema: {
-                        $ref: "#/schemas/Aluno" 
+                        $ref: "#/schemas/Disciplina" 
                     },
                 },
             },
@@ -130,7 +130,7 @@ export const GetDeletePutAlunoById = {
             {
                 name: "id",
                 in: "path",
-                description: "ID do aluno",
+                description: "ID da Disciplina",
                 required: true,
                 schema: {
                     type: "number"
@@ -139,11 +139,11 @@ export const GetDeletePutAlunoById = {
         ],
         responses: {
             200: {
-                description: "aluno",
+                description: "disciplina",
                 content: {
                     "application/json": {
                         schema: {
-                            $ref: "#/schemas/Aluno"
+                            $ref: "#/schemas/Disciplina"
                         }
                     },
                 },
