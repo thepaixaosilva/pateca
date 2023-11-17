@@ -21,6 +21,7 @@ export default class GabaritoAlunoRoutes {
         res.json(gabaritoAluno)
       }
     })
+    
     // Rotas get especiais
     router.get('/alunos/:id', (req, res) => {
       const gabaritoAluno = this.db.findAllByCodAluno(Number(req.params.id))
