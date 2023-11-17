@@ -8,5 +8,5 @@ export default {
     '/alunos': GetPostAluno,
     '/alunos/{id}': GetDeletePutAlunoById,
     '/disciplinas': GetPostDisciplina,
-    '/disciplianas/{id}': GetDeletePutDisciplinaById,
+    '/disciplinas/{id}': GetDeletePutDisciplinaById,
 }

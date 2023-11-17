@@ -1,7 +1,7 @@
 export const GetPostDisciplina = {
     get: {
         description: "Retorna a lista de Discilpinas",
-        tags: ["Disciplinas"],
+        tags: ["Disciplina"],
         responses: {
             200: {
                 description: "Lista de disciplinas",
