@@ -5,5 +5,7 @@ export default class AlunoModel extends BaseModel {
         super(db, 'alunos')
     }
 
-    // Adicionar um método para realizar a pesquisa de alunos por nome - funcionalidade a ser debatida.
+    findByName(nome) {
+        return this.db.find((item) => item.nome == nome)
+    }
 }

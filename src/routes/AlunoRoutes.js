@@ -27,6 +27,13 @@ export default class AlunoRoutes {
       res.status(200).json(aluno)
     })
 
+    // Obtém o resgistro com o nome enviado pelo parâmetro
+    router.get('/nome/:name', (req, res) => {
+      const aluno = this.db.findByName(req.params.name)
+      if(!aluno) return res.status(404).json({erro: "Nome não encontrado"})
+      else res.status(200).json(aluno)
+    })
+
     // Cria um novo registro.
     router.post('/', (req, res) => {
       const novoAluno = req.body

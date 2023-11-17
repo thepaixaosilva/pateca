@@ -1,5 +1,5 @@
 import { GetPostGabaritoOficial, GetDeletePutGabaritoOficialById } from "./gabaritosOficiais.js";
-import { GetPostAluno, GetDeletePutAlunoById} from "./aluno.js"
+import { GetPostAluno, GetDeletePutAlunoById, GetAlunoByName} from "./aluno.js"
 import { GetPostDisciplina, GetDeletePutDisciplinaById} from "./disciplina.js"
 
 export default {
@@ -7,6 +7,7 @@ export default {
     '/gabaritoOficiais/{id}': GetDeletePutGabaritoOficialById,
     '/alunos': GetPostAluno,
     '/alunos/{id}': GetDeletePutAlunoById,
+    '/alunos/nome/{name}': GetAlunoByName,
     '/disciplinas': GetPostDisciplina,
     '/disciplinas/{id}': GetDeletePutDisciplinaById,
 }
