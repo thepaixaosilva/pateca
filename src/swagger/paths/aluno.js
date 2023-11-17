@@ -154,3 +154,36 @@ export const GetDeletePutAlunoById = {
         },
     },
 }
+
+export const GetAlunoByName = {
+    get: {
+        description: "Retorna o Aluno pelo Nome",
+        tags: ["Aluno"],
+        parameters: [
+            {
+                name: "name",
+                in: "path",
+                description: "Nome do aluno",
+                required: true,
+                schema: {
+                    type: "string"
+                },
+            },
+        ],
+        responses: {
+            200: {
+                description: "aluno",
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/schemas/Aluno"
+                        }
+                    },
+                },
+            },
+            500: {
+                description: "Erro interno",
+            },
+        },
+    },
+}

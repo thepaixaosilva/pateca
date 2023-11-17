@@ -15,7 +15,7 @@ const db = {
         new Disciplina("AG994", "Administração Geral", 1)
     ],
     gabaritoAlunos: [
-        new GabaritoAluno(1, "1234567890123", "LP003", 1, ["a","b","c","d","e"], 10)
+        new GabaritoAluno(1, 1234567890123, "LP003", 1, ["a","b","c","d","e"], 10)
     ],
     gabaritoOficiais: [
         new GabaritoOficial(1, ["a","b","c","d","e"], 1, "10/10/2023")
