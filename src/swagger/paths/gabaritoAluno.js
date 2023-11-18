@@ -1,7 +1,7 @@
 export const GetPostGabaritoAluno = {
     get: {
         description: "Retorna a lista de Gabaritos Aluno",
-        tags: ["GabaritosAluno"],
+        tags: ["GabaritoAlunos"],
         responses: {
             200: {
                 description: "Lista de gabaritos",
@@ -23,7 +23,7 @@ export const GetPostGabaritoAluno = {
     },
     post: {
         description: "Cria um novo gabarito aluno",
-        tags: ["GabaritosAlunos"],
+        tags: ["GabaritoAlunos"],
         requestBody: {
             required: true,
             content: {
@@ -55,7 +55,7 @@ export const GetPostGabaritoAluno = {
 export const GetDeletePutGabaritoAlunoById = {
     get: {
         description: "Retorna o gabarito pelo ID",
-        tags: ["GabaritosAluno"],
+        tags: ["GabaritoAlunos"],
         parameters: [
             {
                 name: "id",
@@ -85,7 +85,7 @@ export const GetDeletePutGabaritoAlunoById = {
     },
     delete: {
         description: "Deleta o gabarito pelo ID",
-        tags: ["GabaritosAlunos"],
+        tags: ["GabaritoAlunos"],
         parameters: [
             {
                 name: "id",
@@ -115,7 +115,7 @@ export const GetDeletePutGabaritoAlunoById = {
     },
     put: {
         description: "Atauliza um gabarito aluno",
-        tags: ["GabaritosAlunos"],
+        tags: ["GabaritoAlunos"],
         requestBody: {
             required: true,
             content: {
@@ -140,6 +140,105 @@ export const GetDeletePutGabaritoAlunoById = {
         responses: {
             200: {
                 description: "gabarito aluno",
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/schemas/GabaritoAluno"
+                        }
+                    },
+                },
+            },
+            500: {
+                description: "Erro interno",
+            },
+        },
+    },
+}
+
+export const GetGabaritoAlunoByAlunoId = {
+    get: {
+        description: "Retorna o Gabarito do Aluno pelo Id do Aluno",
+        tags: ["GabaritoAlunos"],
+        parameters: [
+            {
+                name: "id",
+                in: "path",
+                description: "Id do aluno",
+                required: true,
+                schema: {
+                    type: "number"
+                },
+            },
+        ],
+        responses: {
+            200: {
+                description: "gabaritoAluno",
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/schemas/GabaritoAluno"
+                        }
+                    },
+                },
+            },
+            500: {
+                description: "Erro interno",
+            },
+        },
+    },
+}
+
+export const GetGabaritoAlunoByDisciplinaId = {
+    get: {
+        description: "Retorna o Gabarito do Aluno pelo Id da Disciplina",
+        tags: ["GabaritoAlunos"],
+        parameters: [
+            {
+                name: "id",
+                in: "path",
+                description: "Id da disciplina",
+                required: true,
+                schema: {
+                    type: "string"
+                },
+            },
+        ],
+        responses: {
+            200: {
+                description: "gabaritoAluno",
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/schemas/GabaritoAluno"
+                        }
+                    },
+                },
+            },
+            500: {
+                description: "Erro interno",
+            },
+        },
+    },
+}
+
+export const GetGabaritoAlunoByGabaritoOficialId = {
+    get: {
+        description: "Retorna o Gabarito do Aluno pelo Id do Gabarito Oficial",
+        tags: ["GabaritoAlunos"],
+        parameters: [
+            {
+                name: "id",
+                in: "path",
+                description: "Id do gabarito oficial",
+                required: true,
+                schema: {
+                    type: "number"
+                },
+            },
+        ],
+        responses: {
+            200: {
+                description: "gabaritoAluno",
                 content: {
                     "application/json": {
                         schema: {
