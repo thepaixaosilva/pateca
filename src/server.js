@@ -35,6 +35,8 @@ app.use('/gabaritoOficiais', gabaritoOficialRoutes.routes())
 app.use('/docs', swaggerUi.serve,
 swaggerUi.setup(swaggerDocument, {explore: true}))
 
-app.listen(3000,() => {
+const port = process.env.PORT || 3001
+
+/*app.listen(3000,() => {
     console.log('Server rodando na porta 3000')
-})
+})*/
