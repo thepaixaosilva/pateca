@@ -8,7 +8,6 @@ import GabaritoOficialRoutes from "./routes/GabaritoOficialRoutes.js"
 import swaggerUi from "swagger-ui-express"
 import swaggerDocument from './swagger/config.js'
 
-const express = require('express')
 const app = express()
 app.use(express.json())
 
