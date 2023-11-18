@@ -38,5 +38,5 @@ swaggerUi.setup(swaggerDocument, {explore: true}))
 const port = process.env.PORT || 3001
 
 app.listen(port,() => {
-    console.log('Server rodando na porta 3000')
+    console.log(`Server rodando na porta ${port}`)
 })
