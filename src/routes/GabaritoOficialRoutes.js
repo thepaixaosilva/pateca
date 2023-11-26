@@ -1,5 +1,4 @@
-//rotas Gabarito
-import {Router} from "express"
+import { Router } from "express"
 import GabaritoOficialModel from "../models/GabaritoOficialModel.js"
 
 export default class GabaritoOficialRoutes {
@@ -10,11 +9,13 @@ export default class GabaritoOficialRoutes {
   routes(){
     const router = Router()
 
+    // Obtém todos os registros.
     router.get('/',(req,res) => {
       const gabaritoProvas = this.db.findAll()
       res.json(gabaritoProvas)
     })
 
+    // Obtém apenas o registro especificado na requisição.
     router.get('/:id', (req, res) => {
       const gabaritoProva = this.db.findById(req.params.id)
       if (!gabaritoProva) {
@@ -24,6 +25,7 @@ export default class GabaritoOficialRoutes {
       }
     })
 
+    // Cria um novo registro.
     router.post('/',(req,res)=>{
       const novoGabaritoProva = req.body
 
@@ -36,6 +38,7 @@ export default class GabaritoOficialRoutes {
       res.json({ message: 'Gabarito da Prova criado com sucesso' })
     })
 
+    // Altera um registro existente.
     router.put('/:id', (req, res) => {
       const { id } = req.params
       const gabaritoProva = req.body
@@ -49,6 +52,7 @@ export default class GabaritoOficialRoutes {
       res.json({ message: 'Gabarito da Prova alterado com sucesso' })
     })
 
+    // Exclui um registro da base de dados.
     router.delete('/:id', (req, res) => {
       const { id } = req.params
       this.db.delete(id)

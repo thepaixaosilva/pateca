@@ -114,7 +114,7 @@ export const GetDeletePutGabaritoOficialById = {
         },
     },
     put: {
-        description: "Atauliza um gabarito oficial",
+        description: "Atualiza um gabarito oficial",
         tags: ["GabaritosOficiais"],
         requestBody: {
             required: true,

@@ -1,4 +1,4 @@
-// Entidade Nota (será alterado).
+// Entidade GabaritoAluno.
 export default class GabaritoAluno {
     constructor (id, codAluno, codDisciplina, codGabaritoOficial, respostaAluno, nota) {
         this.id = id

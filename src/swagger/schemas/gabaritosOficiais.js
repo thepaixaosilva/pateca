@@ -11,7 +11,7 @@ export const GabaritoOficial = {
             description: "Respostas da prova",
         },
         codDisciplina: {
-            type: "number",
+            type: "string",
             description: "Código da disciplina",
         },
         dataProva: {
@@ -20,9 +20,9 @@ export const GabaritoOficial = {
         },
     },
     example: {
-        id: 1,
-        respostaProva: [ "a", "b","c","d","e"],
-        codDisciplina: 1,
-        dataProva: "12/11/2023",
+        id: 2,
+        respostaProva: ["b","b","c","a","e"],
+        codDisciplina: "INF-164",
+        dataProva: "14/11/2023",
     },
 }
