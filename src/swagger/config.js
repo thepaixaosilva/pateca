@@ -10,7 +10,7 @@ const swaggerDocument = {
     },
     server: [
         {
-            url: "http://localhost:3000"
+            url: "https://pi-pateca.onrender.com/"
         },
     ],
     paths,

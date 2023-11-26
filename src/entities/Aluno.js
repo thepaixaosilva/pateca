@@ -1,3 +1,4 @@
+// Entidade Aluno.
 export default class Aluno {
     constructor (id, nome, senha) {
         this.id = id
@@ -6,7 +7,7 @@ export default class Aluno {
     }
 
     // Método para verificar se o login é do coordenador.
-    async verificarCoordenador(id, senha) { 
+    /*async verificarCoordenador(id, senha) { 
         const minhaPromise = new Promise((resolve,reject) => {
             if (id == 123456789 && senha == "coordenador") {
                 resolve(`É coordenador`)
@@ -20,5 +21,5 @@ export default class Aluno {
         ).catch(
             (resultado) => console.log(resultado)
         )
-    }
+    }*/
 }

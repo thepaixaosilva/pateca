@@ -1,9 +1,9 @@
 export const Disciplina = {
     type: "object",
-    required: ["id","nome", "senha"],
+    required: ["id","nome", "semestre"],
     properties: {
         id: {
-            type: "number",
+            type: "string",
             description: "ID da disciplina",
         },
         nome: {
@@ -11,13 +11,13 @@ export const Disciplina = {
             description: "Nome da disciplina",
         },
         semestre: {
-            type: "string",
+            type: "number",
             description: "Semestre referente a disciplina",
         }
     },
-    example: {
-        id: 10945645539,
-        nome: "CALCULO 1",
-        semestre: "2"
+    example: {    
+        id: "HST-001",
+        nome: "Sociedade, Tecnologia e Informação",
+        semestre: 1
     },
 }

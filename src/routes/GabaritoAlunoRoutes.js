@@ -6,13 +6,16 @@ export default class GabaritoAlunoRoutes {
     this.db = new GabaritoAlunoModel(db)
   }
 
-  // Aqui estão todas as rotas possíveis de tarefa
   routes() {
     const router = Router()
+
+    // Obtém todos os registros.
     router.get('/', (req, res) => {
       const gabaritoAlunos = this.db.findAll()
       res.json(gabaritoAlunos)
     })
+
+    // Obtém apenas o registro especificado na requisição.
     router.get('/:id', (req, res) => {
       const gabaritoAluno = this.db.findById(req.params.id) 
       if (!gabaritoAluno) {
@@ -22,7 +25,9 @@ export default class GabaritoAlunoRoutes {
       }
     })
     
-    // Rotas get especiais
+    // Rotas get especiais.
+
+    // Obtém todos os registros de alunos especificados pelo id.
     router.get('/alunos/:id', (req, res) => {
       const gabaritoAluno = this.db.findAllByCodAluno(Number(req.params.id))
       if (gabaritoAluno == "") {
@@ -31,6 +36,8 @@ export default class GabaritoAlunoRoutes {
         res.json(gabaritoAluno)
       }
     })
+
+    // Obtém todos os registros de disciplinas especificadas pelo id.
     router.get('/disciplinas/:id', (req, res) => {
       const gabaritoAluno = this.db.findAllByCodDisciplina(req.params.id)
       if (gabaritoAluno == "") {
@@ -39,6 +46,8 @@ export default class GabaritoAlunoRoutes {
         res.json(gabaritoAluno)
       }
     })
+
+    // Obtém todos os registros de gabaritos oficiais especificados pelo id.
     router.get('/gabaritoOficiais/:id', (req, res) => {
       const gabaritoAluno = this.db.findAllByCodGabaritoOficial(Number(req.params.id))
       if (gabaritoAluno == "") {
@@ -48,6 +57,7 @@ export default class GabaritoAlunoRoutes {
       }
     })
     
+    // Cria um novo registro.
     router.post('/', (req, res) => {
       const novoGabaritoAluno = req.body
 
@@ -60,8 +70,10 @@ export default class GabaritoAlunoRoutes {
       this.db.create(novoGabaritoAluno)
       res.json({ message: 'Gabarito do Aluno criado com sucesso' })
     })
+
+    // Altera um registro existente.
     router.put('/:id', (req, res) => {
-      const { id } = req.params // verificar se usaremos a palavra id ou cod
+      const { id } = req.params 
       const gabaritoAluno = req.body
 
       if(!gabaritoAluno.codAluno) return res.status(400).json({ message: 'O código do aluno é obrigatório' })
@@ -73,11 +85,14 @@ export default class GabaritoAlunoRoutes {
       this.db.update(id, gabaritoAluno)
       res.json({ message: 'Gabarito do Aluno alterado com sucesso' })
     })
+
+    // Exclui um registro da base de dados.
     router.delete('/:id', (req, res) => {
-      const { id } = req.params // verificar se usaremos a palavra id ou cod
+      const { id } = req.params 
       this.db.delete(id)
       res.json({ message: 'Gabarito do Aluno removido com sucesso' })
     })
+
     return router
   }
 }

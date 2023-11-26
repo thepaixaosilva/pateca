@@ -30,9 +30,9 @@ export const GabaritoAluno = {
     example: {
         id: 5,
         codAluno: 97877889769,
-        codDisciplina: "RP104",
+        codDisciplina: "INF-164",
         codGabaritoOficial: 5,
-        respostaAluno: [ "a", "b","c","d","e"],
+        respostaAluno: ["a", "b","c","d","e"],
         nota: 6,
     },
 }

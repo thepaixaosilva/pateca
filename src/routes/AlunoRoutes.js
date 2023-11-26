@@ -27,7 +27,7 @@ export default class AlunoRoutes {
       res.status(200).json(aluno)
     })
 
-    // Obtém o resgistro com o nome enviado pelo parâmetro
+    // Obtém o resgistro com o nome enviado pelo parâmetro.
     router.get('/nome/:name', (req, res) => {
       const aluno = this.db.findByName(req.params.name)
       if(!aluno) return res.status(404).json({erro: "Nome não encontrado"})
@@ -38,9 +38,9 @@ export default class AlunoRoutes {
     router.post('/', (req, res) => {
       const novoAluno = req.body
       
-      if(!novoAluno.id) return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
-      if(!novoAluno.nome) return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
-      if(!novoAluno.senha) return res.status(400).json({ message: 'A senha é obrigatória' })
+      if(!novoAluno.id || novoAluno.id == "") return res.status(400).json({ message: 'O campo "RA" é obrigatório' })
+      if(!novoAluno.nome || novoAluno.nome == "") return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
+      if(!novoAluno.senha || novoAluno.senha == "") return res.status(400).json({ message: 'A senha é obrigatória' })
 
       this.db.create(novoAluno)
       res.status(201).json(novoAluno)

@@ -44,7 +44,7 @@ export default class DisciplinaRoutes {
       const { id } = req.params
       const disciplina = req.body
 
-      if(!disciplina.id || disciplina.id == "") return res.status(400).json({ message: 'O campo "Id" é obrigatório' })
+      if(!disciplina.id || disciplina.id == "") return res.status(400).json({ message: 'O campo "id" é obrigatório' })
       if(!disciplina.nome || disciplina.nome == "") return res.status(400).json({ message: 'O campo "nome" é obrigatório' })
       if(!disciplina.semestre || disciplina.semestre == "") return res.status(400).json({ message: 'O semestre é obrigatório' })
 

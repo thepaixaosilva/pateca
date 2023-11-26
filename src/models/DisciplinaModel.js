@@ -1,6 +1,6 @@
 import BaseModel from "./BaseModel.js"
 
-export default class DisciplianaModel extends BaseModel {
+export default class DisciplinaModel extends BaseModel {
     constructor(db) {
         super(db, 'disciplinas')
     }

@@ -1,6 +1,6 @@
 export const GetPostDisciplina = {
     get: {
-        description: "Retorna a lista de Discilpinas",
+        description: "Retorna a lista de Disciplinas",
         tags: ["Disciplina"],
         responses: {
             200: {
@@ -10,7 +10,7 @@ export const GetPostDisciplina = {
                         schema: {
                             type: "array",
                             items: {
-                                $ref: "#/schemas/Disciplinas"
+                                $ref: "#/schemas/Disciplina"
                             }
                         },
                     },
@@ -63,7 +63,7 @@ export const GetDeletePutDisciplinaById = {
                 description: "ID da disciplina",
                 required: true,
                 schema: {
-                    type: "number"
+                    type: "string"
                 },
             },
         ],
@@ -93,7 +93,7 @@ export const GetDeletePutDisciplinaById = {
                 description: "ID da Disciplina",
                 required: true,
                 schema: {
-                    type: "number"
+                    type: "string"
                 },
             },
         ],
@@ -133,7 +133,7 @@ export const GetDeletePutDisciplinaById = {
                 description: "ID da Disciplina",
                 required: true,
                 schema: {
-                    type: "number"
+                    type: "string"
                 },
             },
         ],
