@@ -22,7 +22,7 @@ npm i swagger-ui-express
 
 Como neste semestre trabalharemos com Java, utilizaremos o [Eclipse](https://eclipseide.org/) ou o [NetBeans](https://netbeans.apache.org/front/main/) (cuja criadora, a Apache, tabmém criou o [JMeter](https://jmeter.apache.org/), inclusive). Não sei muito sobre ambas IDEs, mas há a possibilidade de não termos a praticidade de realizar os commits e pushes como temos no VSC. Sendo assim, recomendo estudar um pouco sobre a utilização do [Git](https://git-scm.com/doc) ([aqui](https://www.linkedin.com/feed/update/urn:li:activity:7108519059184336896/) estão alguns comandos corriqueiros que serão utilizados) e a CLI do GitHub (cuja documentação pode ser encontrada [aqui](https://cli.github.com/manual/gh)).
 
-MATHEUS: Estou abordando sobre a CLI porque ela é basicamente o GitHub que pode ser utilizado em um terminal (seja o Prompt de Comando do Windows, o terminal do Git etc.). No momento, eu (Matheus) não tenho muita ideia de como utiilzar isso ao favor do projeto, e pretendo conhecer melhor a ferramenta para fazê-lo.
+MATHEUS: Estou abordando sobre a CLI porque ela é basicamente o GitHub que pode ser utilizado em um terminal (seja o Prompt de Comando do Windows, o terminal do Git etc.). No momento, eu (Matheus) não tenho muita ideia de como utiilzar isso a favor do projeto, e pretendo conhecer melhor a ferramenta para fazê-lo.
 
 ### Contribuir
 
