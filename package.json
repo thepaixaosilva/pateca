@@ -1,7 +1,7 @@
 {
   "name": "pi-pateca",
   "version": "1.0.0",
-  "description": "comandos iniciais:\r npm init -y\r npm install nodemon --save-dev\r npm install express --save",
+  "description": "API em Node/Express da Pateca",
   "main": "index.js",
   "type": "module",
   "scripts": {
