@@ -1,7 +1,7 @@
 {
-  "name": "pi-pateca",
-  "version": "1.0.0",
-  "description": "API em Node/Express da Pateca",
+  "name": "patec-back",
+  "version": "0.1.0",
+  "description": "API em Node/Express da Patec.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,15 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matsilva03/PI-Pateca.git"
+    "url": "git+https://github.com/matsilva03/Patec-Back.git"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Matheus P. Silva",
+    "email": "matpaixaoo@outlook.com",
+    "url": "https://github.com/matsilva03"
+  },
+  "contributors": ["Isabella L. Oshima", "Rafael S. M. de Sá", "Rodney A. Ramos", "Victoria M. Fujii"],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/matsilva03/PI-Pateca/issues"
+    "url": "https://github.com/matsilva03/Patec-Back/issues"
   },
-  "homepage": "https://github.com/matsilva03/PI-Pateca#readme",
+  "homepage": "https://github.com/matsilva03/Patec-Back",
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
