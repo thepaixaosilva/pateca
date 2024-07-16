@@ -1,1 +1,7 @@
+.env
 node_modules
+/src/entities
+/src/models
+/src/docs
+/src/sql/patec.sql
+/src/infra/repository/*.routes.js

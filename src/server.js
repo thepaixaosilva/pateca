@@ -1,42 +1,47 @@
-import express from 'express'
-import db from "./database/database.js"
-import AlunoRoutes from "./routes/AlunoRoutes.js"
-import DisciplinaRoutes from "./routes/DisciplinaRoutes.js"
-import GabaritoAlunoRoutes from "./routes/GabaritoAlunoRoutes.js"
-import GabaritoOficialRoutes from "./routes/GabaritoOficialRoutes.js"
+import express from "express";
+const app = express();
 
-import swaggerUi from "swagger-ui-express"
-import swaggerDocument from './swagger/config.js'
+import path from "path";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: __dirname + "/./../.env" });
 
-const app = express()
-app.use(express.json())
+import morgan from "morgan";
+import cors from "cors";
+import routes from "./routes/index.routes.js";
 
-app.get('/healthcheck',(req,res)=>{
-    res.send('Ok!')
-})
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./docs/config.js";
 
-// Acessa as rotas Aluno
-const alunoRoutes = new AlunoRoutes(db)
-app.use('/alunos', alunoRoutes.routes())
+let corsOptions = {
+    origin: process.env.VERSION === "DEV" ? "*" : "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+};
 
-// Acessa as rotas Disicplina
-const disciplinaRoutes = new DisciplinaRoutes(db)
-app.use('/disciplinas', disciplinaRoutes.routes())
+const port = process.env.PORT || 3001;
 
-// Acessa as rotas GabaritoAluno
-const gabaritoAlunoRoutes = new GabaritoAlunoRoutes(db)
-app.use('/gabaritoAlunos', gabaritoAlunoRoutes.routes())
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(morgan("dev"));
 
-// Acessa as rotas GabaritoOficial
-const gabaritoOficialRoutes = new GabaritoOficialRoutes(db)
-app.use('/gabaritoOficiais', gabaritoOficialRoutes.routes())
+app.get("/healthcheck", (req, res) => {
+    res.send("Ok!");
+});
 
+app.use(routes);
+
+/*
 //swagger
-app.use('/docs', swaggerUi.serve,
-swaggerUi.setup(swaggerDocument, {explore: true}))
+app.use(
+    "/apidocs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument, { explore: true })
+);
+*/
 
-const port = process.env.PORT || 3001
-
-app.listen(port,() => {
-    console.log(`Server rodando na porta ${port}`)
-})
+app.listen(port, () => {
+    console.log(`Server rodando na porta ${port}`);
+});
