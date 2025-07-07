@@ -1,47 +1,67 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
-const { defineConfig } = require('eslint/config');
 const jest = require('eslint-plugin-jest');
 const prettier = require('eslint-plugin-prettier');
 const globals = require('globals');
 const js = require('@eslint/js');
-const { FlatCompat } = require('@eslint/eslintrc');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-module.exports = defineConfig([
+module.exports = [
+  // Configuração base do JavaScript recomendada
+  js.configs.recommended,
+  
+  // Configuração para Jest
   {
-    extends: compat.extends(
-      'airbnb-base',
-      'plugin:jest/recommended',
-      'plugin:prettier/recommended',
-    ),
-
+    files: ['**/*.test.js', '**/*.spec.js'],
     plugins: {
       jest,
+    },
+    rules: {
+      ...jest.configs.recommended.rules,
+    },
+  },
+  
+  // Configuração principal
+  {
+    files: ['**/*.js'],
+    plugins: {
       prettier,
     },
-
+    
     languageOptions: {
       globals: {
         ...globals.node,
         ...globals.jest,
       },
-
       ecmaVersion: 'latest',
       sourceType: 'commonjs',
     },
 
     rules: {
+      // Regras do Prettier
+      'prettier/prettier': 'error',
+      
+      // Regras personalizadas
       'no-console': 'error',
       'func-names': 'off',
       'no-underscore-dangle': 'off',
       'consistent-return': 'off',
       'jest/expect-expect': 'off',
+      
+      // Algumas regras do Airbnb Base que você pode querer manter
+      'no-unused-vars': 'error',
+      'no-undef': 'error',
+      'eqeqeq': 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'no-duplicate-imports': 'error',
+      'no-useless-return': 'error',
+      'no-else-return': 'error',
+      'prefer-template': 'error',
+      'object-shorthand': 'error',
+      'prefer-arrow-callback': 'error',
+      'arrow-spacing': 'error',
+      'comma-dangle': ['error', 'always-multiline'],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
+      'indent': ['error', 2],
     },
   },
-]);
+];

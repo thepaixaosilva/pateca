@@ -38,6 +38,7 @@ const validateConfig = () => {
 
   if (config.jwt.expiresIn && !/^\d+[smhd]$/.test(config.jwt.expiresIn)) {
     console.error(
+      // eslint-disable-next-line quotes
       "JWT_EXPIRES_IN must be in the format of a number followed by 's', 'm', 'h', or 'd'",
     );
     process.exit(1);
