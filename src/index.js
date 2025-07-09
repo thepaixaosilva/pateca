@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 const sequelize = require('./config/database/database.config');
-const { validateConfig, config } = require('./config/environment.config');
+const { config } = require('./config/environment.config');
 const app = require('./app');
-
-validateConfig();
 
 let server;
 sequelize.sync().then(() => {
