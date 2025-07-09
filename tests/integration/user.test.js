@@ -205,7 +205,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const updatedName = faker.person.fullName();
-    const res = await request(app).put(`/users/${newUser.id}`).send({
+    const res = await request(app).patch(`/users/${newUser.id}`).send({
       full_name: updatedName,
     });
     expect(res.statusCode).toBe(200);
@@ -232,7 +232,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
 
-    const res = await request(app).put(`/users/${u2.id}`).send({ ra: ra1 });
+    const res = await request(app).patch(`/users/${u2.id}`).send({ ra: ra1 });
 
     expect(res.statusCode).toBe(409);
     expect(res.body).toHaveProperty('error');
@@ -259,7 +259,7 @@ describe('User - UPDATE', () => {
     });
 
     const res = await request(app)
-      .put(`/users/${u2.id}`)
+      .patch(`/users/${u2.id}`)
       .send({ email: email1 });
 
     expect(res.statusCode).toBe(409);
@@ -275,7 +275,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const res = await request(app)
-      .put(`/users/${user.id}`)
+      .patch(`/users/${user.id}`)
       .send({ ra: '123456' });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
@@ -290,7 +290,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const res = await request(app)
-      .put(`/users/${user.id}`)
+      .patch(`/users/${user.id}`)
       .send({ ra: 'ABCDEFGHIJKLM' });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
@@ -305,7 +305,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const res = await request(app)
-      .put(`/users/${user.id}`)
+      .patch(`/users/${user.id}`)
       .send({ email: 'invalid-email' });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
@@ -320,7 +320,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const res = await request(app)
-      .put(`/users/${user.id}`)
+      .patch(`/users/${user.id}`)
       .send({ full_name: '' });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
@@ -335,7 +335,7 @@ describe('User - UPDATE', () => {
       password: faker.internet.password(),
     });
     const res = await request(app)
-      .put(`/users/${user.id}`)
+      .patch(`/users/${user.id}`)
       .send({ role: 'invalidrole' });
     expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty('error');
@@ -343,7 +343,7 @@ describe('User - UPDATE', () => {
 
   it('should return 404 when updating a non-existent user', async () => {
     const res = await request(app)
-      .put('/users/9999')
+      .patch('/users/9999')
       .send({ full_name: 'Novo Nome' });
     expect(res.statusCode).toBe(404);
     expect(res.body).toHaveProperty('error');
