@@ -65,6 +65,12 @@ const envSchema = Joi.object({
     otherwise: Joi.string().default('./database.sqlite'),
   }),
 
+  DB_TIMEZONE: Joi.alternatives().conditional('DB_DIALECT', {
+    not: 'sqlite',
+    then: Joi.string().required(),
+    otherwise: Joi.string().default('-03:00'),
+  }),
+
   PORT: Joi.number().port().default(3000),
 
   JWT_SECRET: Joi.string().required(),
@@ -99,6 +105,7 @@ const config = {
     password: envVars.DB_PASSWORD,
     host: envVars.DB_HOST,
     dialect: envVars.DB_DIALECT,
+    timezone: envVars.DB_TIMEZONE,
   },
   server: {
     port: envVars.PORT,
