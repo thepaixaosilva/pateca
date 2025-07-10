@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoute = require('./user.routes');
+const testDayRoute = require('./test-day.routes');
 // const docsRoute = require('./docs.route');
 const { config } = require('../config/environment.config');
 
@@ -9,6 +10,10 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute,
+  },
+  {
+    path: '/test-days',
+    route: testDayRoute,
   },
 ];
 

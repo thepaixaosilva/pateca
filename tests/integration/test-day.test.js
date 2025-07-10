@@ -84,18 +84,18 @@ describe('Test Day - List', () => {
     });
     const res = await request(app).get('/test-days');
     expect(res.statusCode).toBe(200);
-    expect(Array.isArray(res.body)).toBe(true);
-    expect(res.body.length).toBe(2);
+    expect(Array.isArray(res.body.rows)).toBe(true);
+    expect(res.body.rows.length).toBe(2);
   });
 
   it('should return a specific test day by ID', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).get(`/test-days/${newAvaliacao.id}`);
+    const res = await request(app).get(`/test-days/${newTestDay.id}`);
     expect(res.statusCode).toBe(200);
-    expect(res.body.id).toBe(newAvaliacao.id);
+    expect(res.body.id).toBe(newTestDay.id);
   });
 
   it('should return 404 if the test day does not exist', async () => {
@@ -118,34 +118,36 @@ describe('Test Day - List', () => {
       `/test-days?test_type=${encodeURIComponent(type)}`,
     );
     expect(res.statusCode).toBe(200);
-    expect(res.body.length).toBeGreaterThanOrEqual(1);
-    expect(res.body[0].test_type).toBe(type);
+    expect(res.body.rows.length).toBeGreaterThanOrEqual(1);
+    expect(res.body.rows[0].test_type).toBe(type);
   });
 });
 
 describe('Test Day - Update', () => {
   it('should update the test day data', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
     const newDate = faker.date.future().toISOString().split('T')[0];
     const newType = validTestType();
-    const res = await request(app).put(`/test-days/${newAvaliacao.id}`).send({
+    const res = await request(app).patch(`/test-days/${newTestDay.id}`).send({
       test_date: newDate,
       test_type: newType,
     });
     expect(res.statusCode).toBe(200);
     expect(res.body.test_type).toBe(newType);
-    expect(res.body.test_date).toBe(newDate);
+    expect(new Date(res.body.test_date).toISOString()).toBe(
+      new Date(newDate).toISOString(),
+    );
   });
 
   it('should return 400 if the test date is invalid', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).put(`/test-days/${newAvaliacao.id}`).send({
+    const res = await request(app).patch(`/test-days/${newTestDay.id}`).send({
       test_date: 'invalid-date',
     });
     expect(res.statusCode).toBe(400);
@@ -153,11 +155,11 @@ describe('Test Day - Update', () => {
   });
 
   it('should return 400 when trying to update with invalid type', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).put(`/test-days/${newAvaliacao.id}`).send({
+    const res = await request(app).patch(`/test-days/${newTestDay.id}`).send({
       test_type: 'INVALIDO',
     });
     expect(res.statusCode).toBe(400);
@@ -165,11 +167,11 @@ describe('Test Day - Update', () => {
   });
 
   it('should return 400 if the test date is empty', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).put(`/test-days/${newAvaliacao.id}`).send({
+    const res = await request(app).patch(`/test-days/${newTestDay.id}`).send({
       test_date: '',
     });
     expect(res.statusCode).toBe(400);
@@ -177,11 +179,11 @@ describe('Test Day - Update', () => {
   });
 
   it('should return 400 if the test type is empty', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).put(`/test-days/${newAvaliacao.id}`).send({
+    const res = await request(app).patch(`/test-days/${newTestDay.id}`).send({
       test_type: '',
     });
     expect(res.statusCode).toBe(400);
@@ -189,7 +191,7 @@ describe('Test Day - Update', () => {
   });
 
   it('should return 404 when trying to update a non-existent test day', async () => {
-    const res = await request(app).put('/test-days/9999').send({
+    const res = await request(app).patch('/test-days/9999').send({
       test_type: validTestType(),
     });
     expect(res.statusCode).toBe(404);
@@ -199,13 +201,13 @@ describe('Test Day - Update', () => {
 
 describe('Test Day - Delete', () => {
   it('should delete a test day', async () => {
-    const newAvaliacao = await TestDay.create({
+    const newTestDay = await TestDay.create({
       test_date: faker.date.future(),
       test_type: validTestType(),
     });
-    const res = await request(app).delete(`/test-days/${newAvaliacao.id}`);
+    const res = await request(app).delete(`/test-days/${newTestDay.id}`);
     expect(res.statusCode).toBe(204);
-    const found = await TestDay.findByPk(newAvaliacao.id);
+    const found = await TestDay.findByPk(newTestDay.id);
     expect(found).toBeNull();
   });
 
